@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
-
+import 'product.dart';
 class CartProvider extends ChangeNotifier {
   final List<Product> _cartItems = [];
 
-  List<Product> get cartItems => _cartItems.toList(); // Return a copy to avoid mutation
+  List<Product> get cartItems => _cartItems.toList();
 
   double get totalPrice => _cartItems.fold(0.0, (sum, item) => sum + item.price * item.quantity);
 
@@ -15,7 +15,7 @@ class CartProvider extends ChangeNotifier {
       product.quantity = 1;
       _cartItems.add(product);
     }
-    notifyListeners(); // Notify listeners of cart state changes
+    notifyListeners();
   }
 
   void removeFromCart(Product product) {
